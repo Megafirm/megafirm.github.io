@@ -1,0 +1,79 @@
+p {
+  animation: p-animation 0.5s infinite;
+}
+
+@-webkit-keyframes bg-animation {
+  0% {
+    background-color: black;
+  }
+  50% {
+    background-color: rgb(10,10,10);
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+@keyframes bg-animation {
+  0% {
+    background-color: black;
+  }
+  50% {
+    background-color: rgb(10,10,10);
+  }
+  100% {
+    background-color: black;
+  }
+}
+@-webkit-keyframes p-animation {
+  100% {
+    color: red;
+  }
+  90% {
+    color: brown;
+  }
+  75% {
+    color: pink;
+  }
+  60% {
+    color: purple;
+  }
+  45% {
+    color: blue;
+  }
+  30% {
+    color: green;
+  }
+  15% {
+    color: yellow;
+  }
+  0% {
+    color: red;
+  }
+}
+@keyframes p-animation {
+  100% {
+    color: red;
+  }
+  90% {
+    color: brown;
+  }
+  75% {
+    color: pink;
+  }
+  60% {
+    color: purple;
+  }
+  45% {
+    color: blue;
+  }
+  30% {
+    color: green;
+  }
+  15% {
+    color: yellow;
+  }
+  0% {
+    color: red;
+  }
+}

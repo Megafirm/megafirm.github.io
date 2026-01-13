@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+              font-family: "ƒancy";
+              src: url(assets/font/fontini.ttf) format("truetype");
+            }
+            body {
+                background-color: rgb(5, 25, 58);
+                font-family: 'ƒancy', monospace;
+                color: white;
+            }
+
+            .logo {
+                background-image: url(assets/img/title.png);
+                width: 656px;
+                height: 176px;
+            }
+        </style>
+        <meta charset="utf-8">
+        <title>
+            MegaFirm
+        </title>
+    </head>
+    <body onresize="resize()" onload="resize()">
+        <center>
+            <a href="beep.html">
+                <div class="logo"></div>
+            </a>
+            <br>
+            <center>
+            <div id="factories"></div>
+          </center>
+            <br>
+            <br>
+            <h3>Where mega is the new firm!</h3>
+            <div id="posts"></div>
+        </center>
+      </body>
+
+      <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+      <script>
+        // Initialize Firebase
+        // var config = {
+        //   apiKey: "AIzaSyAxk_x7UnMdikk2TU4F7F09bWUQA88aMjE",
+        //   authDomain: "mega-firm.firebaseapp.com",
+        //   databaseURL: "https://mega-firm.firebaseio.com",
+        //   projectId: "mega-firm",
+        //   storageBucket: "mega-firm.appspot.com",
+        //   messagingSenderId: "106920769467",
+        //   appId: "1:106920769467:web:ae23cd08dc9319fbc1f69e",
+        //   measurementId: "G-KBZ1Q2TDHQ"
+        // };
+        //
+        // var postDiv = document.getElementById("posts");
+        //
+        // firebase.initializeApp(config);
+        // firebase.analytics();
+        //
+        // var db = firebase.database().ref();
+        // db.child("posts").on("value", snap => {
+        //   snap = snap.val();
+        //   postDiv.innerHTML = "<br><br><hr><br>";
+        //   if(snap) {
+        //     for(var i = 0; i < 5; i++) {
+              // postDiv.innerHTML += "<h2>" + snap[i].title + "</h2><p>" + snap[i].description + "</p><br><hr><br>";
+        //     }
+        //   }
+        // });
+
+        var postDiv = document.getElementById("posts");
+
+        //PUT POSTS HERE
+        var posts = [
+          {
+            title: "BallZ Clone",
+            link: "projects/ballZ/index.html",
+            description: "Hey hey hey so like the game BallZ that's for mobile and stuff yeah I made that game u should play it if u want lol",
+            img: ""
+          },
+          {
+            title: "3D Graphing Program",
+            link: "https://drive.google.com/open?id=1s93EiyDs3brMjo1JO_RCf4Fun9IMAxzL",
+            description: "Wanna see some epic 3D graphs? ...well look no further, graph3D is here!",
+            img: "graph3D.png"
+          },
+          {
+            title: "Tetris",
+            link: "https://drive.google.com/open?id=1GWW2Qa7kfiyhCebRXYs1qLNMOm4nhpbv",
+            description: "Hey hi there you reading this it's tetris but like a little 3D",
+            img: "tetris.png"
+          },
+          {
+            title: "Minecraft",
+            link: "https://drive.google.com/file/d/1rAVdjXd5w-S8ofAaH1y1pKKlzm9pcHBZ/view?usp=sharing",
+            description: "Hey, it's free Minecraft! ...Or is it really...is it just a cheap knockoff?",
+            img: "minecraft.png"
+          },
+          {
+            title: "Rainbow Mouse Thing",
+            link: "projects/rainbowMouse/index.html",
+            description: "ooga booga",
+            img: ""
+          },
+          {
+            title: "Dragon Curve",
+            link: "projects/dragonCurve/index.html",
+            description: "wooga hooga",
+            img: ""
+          },
+          {
+            title: "Snake HD",
+            link: "projects/hdSnake/index.html",
+            description: "basically one player slither.io with no score",
+            img: ""
+          }
+        ]
+
+        //posts
+        postDiv.innerHTML = "<br><br><hr><br>";
+        // for (var i = 0; i < posts.length; i++) { // normal array order
+        for (var i = posts.length-1; i > -1; i--) { // reverse array order
+          //text
+          postDiv.innerHTML += "<a href='" + posts[i].link + "', target='_blank', style='text-decoration:none'> <h2 style='color: white'>" + posts[i].title + "</h2></a><p>" + posts[i].description;
+          //picture (optional)
+          if (posts[i].img) postDiv.innerHTML += "<a href='" + posts[i].link + "', target='_blank', style='text-decoration:none'><img src='assets/img/posts/" + posts[i].img + "', height='150', width='150', style='padding: 20'></a>";
+          //break
+          postDiv.innerHTML += "</p><br><hr><br>";
+        }
+      </script>
+      <!--Factories-->
+      <script>
+        function RNG(seed) {
+          // LCG using GCC's constants
+          this.m = 0x80000000; // 2**31;
+          this.a = 1103515245;
+          this.c = 12345;
+
+          this.state = seed ? seed : Math.floor(Math.random() * (this.m - 1));
+        }
+        RNG.prototype.nextInt = function() {
+          this.state = (this.a * this.state + this.c) % this.m;
+          return this.state;
+        }
+        RNG.prototype.nextFloat = function() {
+          // returns in range [0,1]
+          return this.nextInt() / (this.m - 1);
+        }
+        RNG.prototype.nextRange = function(start, end) {
+        // returns in range [start, end): including start, excluding end
+        // can't modulu nextInt because of weak randomness in lower bits
+        var rangeSize = end - start;
+        var randomUnder1 = this.nextInt() / this.m;
+          return start + Math.floor(randomUnder1 * rangeSize);
+        }
+        RNG.prototype.choice = function(array) {
+          return array[this.nextRange(0, array.length)];
+        }
+
+        var factoryDiv = document.getElementById("factories");
+        var factoryHeight = 40;
+        var rngSeed = new Date().getTime();
+
+        var factoryImageData = [
+          {
+            image: "assets/img/factories/factory1.png",
+            width: 26/26*factoryHeight
+          },
+          {
+            image: "assets/img/factories/factory2.png",
+            width: 21/26*factoryHeight
+          },
+          {
+            image:"assets/img/factories/factory3.png",
+            width: 27/33*factoryHeight
+          },
+          {
+            image:"assets/img/factories/factory4.png",
+            width: 21/33*factoryHeight
+          }
+        ];
+
+        function resize() {
+          factoryDiv.innerHTML = "";
+          generateFactories();
+        }
+        function generateFactories() {
+          var rng = new RNG(rngSeed);
+          var windowWidth = document.documentElement.clientWidth;
+          var factoryWidth = 0;
+
+          while (true) {
+            var factoryID = rng.nextRange(0,factoryImageData.length);
+            factoryWidth += factoryImageData[factoryID].width;
+            if(factoryWidth < windowWidth-50) {
+              factoryDiv.innerHTML += "<img src=\"" + factoryImageData[factoryID].image + "\"width=" + factoryImageData[factoryID].width + " height=" + factoryHeight + ">";
+            } else {
+              break;
+            }
+          }
+        }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script>
+        //Remove Freewha Logo
+        $(document).ready(function(){
+          $('body').find('img[src$="https://www.freewebhostingarea.com/images/poweredby.png"]').remove();
+        });
+      </script>
+</html>

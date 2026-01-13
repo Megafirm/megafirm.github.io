@@ -1,0 +1,110 @@
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <title>
+    P.I. - Projects
+  </title>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>
+      Personal Introduction - Projects
+    </h1>
+    <a href="index.html" class="button">Home</a>
+    <a href="about.html" class="button" title="Learn a little about who I am!">About</a>
+    <a href="projects.html" class="button" title="See some of the projects that I've made!">Projects</a>
+  </div>
+
+  <hr id="gap">
+
+  <h3 style="text-align: center">
+    Here are some links to the projects that I've created:
+  </h3>
+  <div id="projects"></div>
+
+  <div class="footer">
+    <p>
+      &#9400;2018-2020 <b><a href="../../../../index.html">Mega-Firm inc.</a></b><br>All Rights Reserved.
+    </p>
+  </div>
+</body>
+
+<script>
+  let postDiv = document.getElementById("projects");
+
+  //PUT POSTS HERE
+  let posts = [{
+      title: "Tetris - Processing",
+      link: "https://drive.google.com/open?id=1GWW2Qa7kfiyhCebRXYs1qLNMOm4nhpbv",
+      description: "A version of Tetris programmed in processing.",
+      img: "tetris.png"
+    },
+    {
+      title: "Minecraft - Processing",
+      link: "https://drive.google.com/file/d/1rAVdjXd5w-S8ofAaH1y1pKKlzm9pcHBZ/view?usp=sharing",
+      description: "A game based off of Minecraft with 3D terrain, structure, and cave generation, all built in processing.",
+      img: "minecraft.png"
+    },
+    {
+      title: "Snake HD - p5.js",
+      link: "../../../../projects/hdSnake/index.html",
+      description: "Snake created in p5.js but where the player is not restricted to a grid, based off of a game called slither.io (plays with arrow keys).",
+      img: ""
+    },
+    {
+      title: "Calculator",
+      link: "../../calculator/public/index.html",
+      description: "This is one of the first projects of the class, in which we use styles to make the webpage clean as well as using logic in javascript to program the functioning calculator.",
+      img: ""
+    },
+    {
+      title: "Robot Test",
+      link: "../../robotTest/public/index.html",
+      description: "This project is a possible solution to detect whether a given user is a robot or not on the website.",
+      img: ""
+    },
+    {
+      title: "Bouncing Balls",
+      link: "../../ballBounce/public/index.html",
+      description: "This program is able to simulate balls interacting with one another, in addition to controlling the gravity.",
+      img: ""
+    },
+    {
+      title: "Snake HD Modifiers",
+      link: "../../snakeSnakeSNAKE/public/index.html",
+      description: "THis is an addition to the original Snake HD made by me, but instead with some modifiers to play around with.",
+      img: ""
+    },
+    {
+      title: "Typing Speed Test",
+      link: "../../typeTest/public/index.html",
+      description: "This program can simply tell you your typing speed after typing a quote found by the quotes.rest API.",
+      img: ""
+    }
+  ]
+
+  //posts
+  postDiv.innerHTML = "<hr>";
+  for (let i = posts.length - 1; i > -1; i--) { // reverse array order
+    //text
+    postDiv.innerHTML += "<a href='" + posts[i].link + "', target='_blank', style='text-decoration:none'> <h2 style='color: white'>" + posts[i].title + "</h2></a><p style='text-align: center'>" + posts[i].description + "</p>";
+    //picture (optional)
+    if (posts[i].img) postDiv.innerHTML += "<center><a href='" + posts[i].link + "', target='_blank', style='text-decoration:none'><img src='../../../../assets/img/posts/" + posts[i].img +
+      "', height='100', width='100', style='padding:20'></a></center>";
+    //break
+    postDiv.innerHTML += "<hr>";
+  }
+  postDiv.innerHTML += "<br><br><br><br>";
+</script>
+<script>
+  //Remove Freewha Logo
+  $(document).ready(function() {
+    $('body').find('img[src$="https://www.freewebhostingarea.com/images/poweredby.png"]').remove();
+  });
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!-- this is a comment-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Typing Test</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <h1>QOD Category:</h1>
+  <h3 id="options"></h3>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="scripts/canvas.js"></script>
+  <script>
+    let options = ["inspire", "management", "sports", "life", "funny", "love", "art", "students"];
+    let optionsHTML = document.getElementById("options");
+
+    hideFreeWHA();
+
+    for (let i = 0; i < options.length; i++) {
+      insertCategory(options[i]);
+      if (i != options.length-1) optionsHTML.innerHTML += ", ";
+    }
+
+    function insertCategory(option) {
+      let url = location.href;
+      let newURL = url.substring(0, url.length-"index.html".length)+"typeTest.html?";
+      optionsHTML.innerHTML = optionsHTML.innerHTML + "<a href='" + newURL + option + "'>" + option + "</a>";
+    }
+  </script>
+</body>
+
+</html>

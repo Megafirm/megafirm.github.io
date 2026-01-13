@@ -1,0 +1,18 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "transport": "ftp",
+  "uploadOnSave": false,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "www.mega-firm.com",
+  "port": "21",
+  "target": "/",
+  "ignore": [
+    ".ftpquota"
+  ],
+  "username": "www.mega-firm.com",
+  "password": "pleasedontstealo",
+  "watch": []
+}

@@ -1,0 +1,83 @@
+html {
+  background: rgb(120, 115, 205);
+  background: linear-gradient(135deg, rgba(120, 115, 205, 1), rgba(36, 121, 166, 1), rgba(0, 181, 218, 1));
+}
+
+body {
+  color: #ffffff;
+  font-family: Arial;
+}
+
+p {
+  margin: 20px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+h2 {
+  text-align: center;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #4e6096, rgba(0, 0, 0, 0));
+}
+
+hr#gap {
+  margin: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 5;
+}
+
+/* Awesome button */
+.header .button {
+  box-shadow: 0px 3px 3px 0px #9fb4f2;
+  background-color: #7892c2;
+  border-radius: 25px;
+  border: 2px solid #4e6096;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 13px 27px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #283966;
+}
+
+.header .button:hover {
+  background-color: #476e9e;
+  box-shadow: 0px 3px 3px 0px #29486e;
+}
+
+.header .button:active {
+  position: relative;
+  top: 4px;
+  box-shadow: 0px 0px 0px 0px #9fb4f2;
+}
+
+a .button {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-weight: normal;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer {
+  background: rgb(120, 115, 205);
+  background: linear-gradient(135deg, rgba(26, 101, 136, 1), rgba(0, 151, 198, 1));
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}

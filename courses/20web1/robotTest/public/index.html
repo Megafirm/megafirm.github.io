@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta charset="utf-8" />
+  <title>robotTest</title>
+</head>
+
+<body>
+  <input type="button" value="Submit" id="submit">
+  <hr>
+  <p>
+    Press the button until the value is: <b id="n0">0</b>
+  </p>
+  <input type="button" value="Press me!" id="b0">
+  <p>
+    Value: <b id="v0">0</b>
+  </p>
+  <hr>
+  <p>
+    Match the following text using the textbox: <b id="n1">0</b>
+    <br>
+  </p>
+  <input type="text" value="" placeholder="Input text here" id="v1">
+  <hr>
+</body>
+
+<!-- Firebase Stuff -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA63UXeyaJHQ3I9Lmqkyufrki5d1SxpvHk",
+    authDomain: "ipblockdatabase.firebaseapp.com",
+    databaseURL: "https://ipblockdatabase.firebaseio.com",
+    projectId: "ipblockdatabase",
+    storageBucket: "ipblockdatabase.appspot.com",
+    messagingSenderId: "968847329225",
+    appId: "1:968847329225:web:d8cf885a29291523134a18",
+    measurementId: "G-Z5T9YQC7TG"
+  };
+
+  var postDiv = document.getElementById("posts");
+
+  firebase.initializeApp(config);
+  firebase.analytics();
+
+  var db = firebase.database().ref('/');
+
+  let ips = [];
+  db.on("value", snap => {
+    snap = snap.val();
+    if (snap) {
+      for (var i = 0; i < snap.length; i++) {
+        ips.unshift(snap[i]);
+      }
+    }
+    console.log(snap)
+  });
+
+  console.log(db);
+  console.log(ips);
+</script>
+
+<!-- Actually block ips -->
+<!-- <script type="application/javascript">
+  function getIP(json) {
+    if (json.ip = "199.249.227.170") {
+      alert("Blocked  -> Go play with Google");
+      window.location = "https://www.google.com";
+    }
+  }
+</script> -->
+
+<!-- <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script> -->
+
+<!-- Tests -->
+<script src="js/main.js"></script>
+<script src="js/canvas.js"></script>
+
+</html>
